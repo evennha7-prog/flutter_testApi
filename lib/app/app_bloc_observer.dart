@@ -1,37 +1,46 @@
 import 'dart:developer' as developer;
+import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 /// [AppBlocObserver] monitors all Bloc events, transitions, changes, and errors across the application.
-/// Following the official Bloc best practices standard.
+/// Logging is only active in debug mode to prevent sensitive data leaks in production builds.
 class AppBlocObserver extends BlocObserver {
   const AppBlocObserver();
 
   @override
   void onEvent(Bloc bloc, Object? event) {
     super.onEvent(bloc, event);
-    developer.log('onEvent: ${bloc.runtimeType} -> $event', name: 'AppBlocObserver');
+    if (kDebugMode) {
+      developer.log('onEvent: ${bloc.runtimeType} -> $event', name: 'AppBlocObserver');
+    }
   }
 
   @override
   void onChange(BlocBase bloc, Change change) {
     super.onChange(bloc, change);
-    developer.log('onChange: ${bloc.runtimeType} -> $change', name: 'AppBlocObserver');
+    if (kDebugMode) {
+      developer.log('onChange: ${bloc.runtimeType} -> $change', name: 'AppBlocObserver');
+    }
   }
 
   @override
   void onTransition(Bloc bloc, Transition transition) {
     super.onTransition(bloc, transition);
-    developer.log('onTransition: ${bloc.runtimeType} -> $transition', name: 'AppBlocObserver');
+    if (kDebugMode) {
+      developer.log('onTransition: ${bloc.runtimeType} -> $transition', name: 'AppBlocObserver');
+    }
   }
 
   @override
   void onError(BlocBase bloc, Object error, StackTrace stackTrace) {
     super.onError(bloc, error, stackTrace);
-    developer.log(
-      'onError: ${bloc.runtimeType} -> $error',
-      name: 'AppBlocObserver',
-      error: error,
-      stackTrace: stackTrace,
-    );
+    if (kDebugMode) {
+      developer.log(
+        'onError: ${bloc.runtimeType} -> $error',
+        name: 'AppBlocObserver',
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
   }
 }
