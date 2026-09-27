@@ -5,6 +5,7 @@ import 'package:ecommerce_api/features/cart/bloc/cart_bloc.dart';
 import 'package:ecommerce_api/features/navigation/bloc/navbar_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class HomeHeader extends StatelessWidget implements PreferredSizeWidget {
   const HomeHeader({super.key});
@@ -20,9 +21,10 @@ class HomeHeader extends StatelessWidget implements PreferredSizeWidget {
       scrolledUnderElevation: 0,
       surfaceTintColor: Colors.transparent,
       centerTitle: false,
-      title: const Text(
+      title: Text(
         'Khmer Retail Store',
-        style: TextStyle(
+        style: GoogleFonts.lato(
+          textStyle: Theme.of(context).textTheme.displayLarge,
           fontSize: 22,
           fontWeight: FontWeight.bold,
           color: Colors.white,

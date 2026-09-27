@@ -39,6 +39,7 @@ dependencies:
   http: ^1.6.0
   shimmer: ^4.0.0
   equatable: ^3.0.0
+  google_fonts: ^8.2.1
 
 dev_dependencies:
   flutter_test:
